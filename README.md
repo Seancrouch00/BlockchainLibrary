@@ -47,7 +47,7 @@ You can install **BlockchainLibrary** by downloading or cloning this repository 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/[your-username]/BlockchainLibrary.git
+git clone https://github.com/Seancrouch00/BlockchainLibrary.git
 ```
 
 2. Build the project using **Visual Studio** or **.NET CLI**.
