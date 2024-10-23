@@ -48,28 +48,4 @@ namespace BlockchainLibrary
             return Blocks.Count > 0 ? Blocks[^1] : null;
         }
     }
-
-    public class BeaconChain
-    {
-        public List<Shard> Shards { get; set; } = new List<Shard>();
-
-        public BeaconChain(int shardCount)
-        {
-            for (int i = 0; i < shardCount; i++)
-            {
-                Shards.Add(new Shard(i));
-            }
-        }
-
-        public void ProcessShardTransactions()
-        {
-            foreach (var shard in Shards)
-            {
-                var transactions = shard.TransactionPool.GetUnconfirmedTransactions();
-                Block newBlock = new Block(shard.Blocks.Count, DateTime.Now, transactions, shard.GetLatestBlock()?.Hash);
-                shard.AddBlock(newBlock);
-                shard.TransactionPool.Clear();
-            }
-        }
-    }
 }

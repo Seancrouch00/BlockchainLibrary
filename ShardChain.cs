@@ -26,8 +26,6 @@ namespace BlockchainLibrary
 
         public bool CrossShardTransaction(string fromShard, string toShard, Transaction transaction)
         {
-            // Simplified logic to perform cross-shard transaction
-            // In a real implementation, you'd handle inter-shard communication.
             Console.WriteLine($"Cross-shard transaction from Shard {fromShard} to Shard {toShard}");
             return true;
         }
