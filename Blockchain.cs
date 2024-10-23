@@ -33,15 +33,19 @@ namespace BlockchainLibrary
         public int Difficulty { get; set; }
         public TransactionPool TransactionPool { get; set; }
         public DPoS ConsensusMechanism { get; set; }
-        public DAO Governance { get; set; }
+        public DecentralizedDAO Governance { get; set; }
+        public BeaconChain BeaconChain { get; set; }
+        public PrivacyEnhancements Privacy { get; set; }
 
-        public Blockchain()
+        public Blockchain(int shardCount)
         {
             Chain = new List<Block> { CreateGenesisBlock() };
             Difficulty = 2;
             TransactionPool = new TransactionPool();
             ConsensusMechanism = new DPoS();
-            Governance = new DAO();
+            Governance = new DecentralizedDAO();
+            BeaconChain = new BeaconChain(shardCount);
+            Privacy = new PrivacyEnhancements();
         }
 
         private Block CreateGenesisBlock()
@@ -95,6 +99,16 @@ namespace BlockchainLibrary
                 }
             }
             return true;
+        }
+
+        public void ProcessShardTransactions()
+        {
+            BeaconChain.ProcessShardTransactions();
+        }
+
+        public void HandleCrossShardTransaction(Transaction transaction, int fromShard, int toShard)
+        {
+            BeaconChain.HandleCrossShardTransactions(transaction, fromShard, toShard);
         }
     }
 }

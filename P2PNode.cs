@@ -56,7 +56,6 @@ namespace BlockchainLibrary
         {
             using (var stream = client.GetStream())
             {
-                // Read data from clients and propagate it
                 byte[] buffer = new byte[1024];
                 int bytesRead = stream.Read(buffer, 0, buffer.Length);
                 string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
